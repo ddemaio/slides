@@ -4,6 +4,19 @@ const fileInput = document.querySelector("#slide-file");
 const fileLabel = document.querySelector("#file-label");
 const status = document.querySelector("#status");
 
+const themeToggle = document.querySelector("#theme-toggle");
+function syncThemeToggle() {
+  themeToggle.setAttribute("aria-pressed", document.documentElement.getAttribute("data-theme") === "dark");
+}
+syncThemeToggle();
+themeToggle.addEventListener("click", () => {
+  const root = document.documentElement;
+  const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  root.setAttribute("data-theme", next);
+  try { localStorage.setItem("theme", next); } catch (e) {}
+  syncThemeToggle();
+});
+
 fileInput.addEventListener("change", () => { fileLabel.textContent = fileInput.files[0] ? fileInput.files[0].name : "Choose your slide deck"; });
 
 function setStatus(message, isError = false) { status.className = `status${isError ? " error" : ""}`; status.innerHTML = message; }
