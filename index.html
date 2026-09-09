@@ -10,7 +10,14 @@
 <body>
   <header class="site-header">
     <a class="brand" href="./" aria-label="openSUSE slides home">
-      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <svg class="brand-mic" viewBox="0 0 24 24" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="8" y="2.5" width="8" height="10.5" rx="4.5" fill="#20caa3"/>
+        <path d="M10.7 6h2.6M10.7 8.7h2.6M10.7 11.4h2.6" stroke="#fff" stroke-width="1.1" stroke-linecap="round" opacity=".85"/>
+        <path d="M12 13.2v2.2" stroke="#17a88a" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M5.4 16.9c1.7 2.2 4 3.3 6.6 3.3s4.9-1.1 6.6-3.3" stroke="#ff5b45" stroke-width="1.9" stroke-linecap="round"/>
+        <path d="M12 20.2v1.6" stroke="#17a88a" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M8.4 21.8h7.2" stroke="#d4cb1b" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
       <span><strong>openSUSE</strong><small>speaker desk</small></span>
     </a>
     <a class="header-link" href="https://events.opensuse.org/" target="_blank" rel="noreferrer">Events <span aria-hidden="true">↗</span></a>
@@ -45,12 +52,8 @@
             <span><strong id="file-label">Choose your slide deck</strong><small>PDF, PPT or PPTX · 25 MB maximum</small></span>
             <input id="slide-file" name="file" type="file" accept=".pdf,.ppt,.pptx,application/pdf,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation" required>
           </label>
-          <details class="token-details">
-            <summary>Repository access <span>needed only when publishing</span></summary>
-            <div class="token-copy"><p>A GitHub fine-grained token with <strong>Contents: write</strong> permission is used in your browser to commit the file. It is never stored.</p><label>GitHub token <input name="token" type="password" autocomplete="off" placeholder="github_pat_..." required></label></div>
-          </details>
           <button class="primary-button" type="submit"><span>Publish slides</span><span aria-hidden="true">→</span></button>
-          <p class="form-note">Your deck will be added to this project’s <code>slides/</code> folder.</p>
+          <p class="form-note">No sign-in needed — your deck is added to this project’s <code>presentations/</code> folder.</p>
         </form>
         <div class="status" id="status" role="status" aria-live="polite"></div>
       </div>

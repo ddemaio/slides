@@ -1,10 +1,33 @@
 # slides
-A place for speakers to host their slides and share a link to them.
+
+A place for openSUSE Conference, Asia Summit and summit speakers to host their slides and share a link to their talk.
 
 ## How it works
 
-This is a plain static site. Publish the repository with GitHub Pages, then open the site and use **Publish slides**. The form commits the selected deck into `slides/` using GitHub's Contents API and returns a GitHub Pages link that can be pasted into an events.opensuse.org abstract.
+- **Site** — a plain static site served by GitHub Pages from this repository.
+- **Uploads** — a small Cloudflare Worker (`worker/`) accepts slide uploads from the website and commits them into `presentations/` using GitHub's Contents API. Visitors upload from the site without any GitHub account or token; the Worker holds the credential.
 
-Before publishing, update the `REPOSITORY` object in `script.js` if the site moves to another GitHub owner or repository. Speakers need a GitHub fine-grained personal access token scoped to this repository with **Contents: write** permission. The token is used in the browser for one request and is not stored.
+### The upload path
 
-For a simple GitHub Pages setup, go to the repository's **Settings → Pages**, select the `main` branch and the `/ (root)` folder, then save.
+1. A speaker fills in the form on the site and picks their deck (PDF/PPT/PPTX, ≤ 25 MB).
+2. The site posts the file to the Worker endpoint (`opensuse-slides-upload.douglasdemaio.workers.dev`).
+3. The Worker validates the file and commits it to `presentations/<talk>-<speaker>.<ext>` in this repository.
+4. The Worker returns the GitHub Pages URL for the file, which the speaker pastes into their abstract on events.opensuse.org.
+
+## Setting up (first time)
+
+### GitHub Pages
+
+Go to **Settings → Pages** and deploy from the `main` branch, `/ (root)` folder.
+
+### Upload Worker
+
+Deploy the Worker and give it the repository credential:
+
+```sh
+cd worker
+wrangler deploy                        # once
+wrangler secret put GITHUB_TOKEN       # fine-grained PAT, repo: ddemaio/slides, Contents: read+write
+```
+
+The site's `UPLOAD_ENDPOINT` in `script.js` points at the Worker's `*.workers.dev` URL; update it if the Worker moves.
