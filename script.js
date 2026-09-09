@@ -3,14 +3,6 @@ const uploadForm = document.querySelector("#upload-form");
 const fileInput = document.querySelector("#slide-file");
 const fileLabel = document.querySelector("#file-label");
 const status = document.querySelector("#status");
-const tabs = document.querySelectorAll(".tab");
-const panels = document.querySelectorAll("[role='tabpanel']");
-
-tabs.forEach((tab) => tab.addEventListener("click", () => {
-  tabs.forEach((item) => item.classList.toggle("is-active", item === tab));
-  tabs.forEach((item) => item.setAttribute("aria-selected", item === tab ? "true" : "false"));
-  panels.forEach((panel) => panel.classList.toggle("hidden", panel.id !== tab.getAttribute("aria-controls")));
-}));
 
 fileInput.addEventListener("change", () => { fileLabel.textContent = fileInput.files[0] ? fileInput.files[0].name : "Choose your slide deck"; });
 
@@ -37,5 +29,3 @@ uploadForm.addEventListener("submit", async (event) => {
     button.querySelector("span").textContent = "Publish slides";
   }
 });
-
-document.querySelector("#find-form").addEventListener("submit", (event) => { event.preventDefault(); const link = new FormData(event.currentTarget).get("link"); window.open(link, "_blank", "noopener,noreferrer"); });

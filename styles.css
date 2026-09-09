@@ -31,9 +31,7 @@ h1 em { color: var(--red); font-family: Georgia, serif; font-weight: normal; let
 .signal-row { display: flex; gap: 18px; margin-top: 36px; color: var(--muted); font-size: 10px; font-weight: bold; letter-spacing: .1em; }
 .signal-row b { display: inline-block; width: 7px; height: 7px; margin-right: 5px; border-radius: 50%; background: var(--green); }.signal-row span:nth-child(2) b { background: var(--cyan); }.signal-row span:nth-child(3) b { background: var(--red); }
 .workspace { border: 1px solid var(--line); background: rgba(255, 252, 246, .8); box-shadow: 14px 18px 0 rgba(36,31,27,.05); }
-.tab-row { display: flex; border-bottom: 1px solid var(--line); padding: 0 30px; gap: 28px; }
-.tab { appearance: none; border: 0; border-bottom: 3px solid transparent; background: none; padding: 21px 0 18px; color: var(--muted); cursor: pointer; font: bold 12px "Trebuchet MS", sans-serif; }.tab.is-active { border-color: var(--green); color: var(--ink); }
-.panel { padding: 34px 38px 30px; }.hidden { display: none; }
+.panel { padding: 34px 38px 30px; }
 .form-heading { display: flex; gap: 15px; align-items: flex-start; margin-bottom: 27px; }.step { color: var(--red); font-family: Georgia, serif; font-size: 20px; font-style: italic; }.form-heading h2 { margin: 0 0 5px; font-size: 21px; letter-spacing: -.03em; }.form-heading p, .form-note { margin: 0; color: var(--muted); font-family: Georgia, serif; font-size: 13px; }
 label { display: block; margin-bottom: 17px; color: var(--muted); font-size: 11px; font-weight: bold; letter-spacing: .08em; text-transform: uppercase; } input { display: block; width: 100%; margin-top: 8px; border: 1px solid var(--line); border-radius: 0; outline: 0; background: #fffdf9; color: var(--ink); padding: 13px 14px; font: 15px Georgia, serif; } input:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(23,168,138,.13); }
 .two-up { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -43,4 +41,4 @@ label { display: block; margin-bottom: 17px; color: var(--muted); font-size: 11p
 .status { min-height: 0; margin-top: 17px; color: var(--green-dark); font: 14px/1.45 Georgia, serif; }.status.error { color: var(--red); }.status a { font-weight: bold; }
 footer { display: flex; gap: 15px; align-items: center; border-top: 1px solid var(--line); padding: 18px 0 25px; color: var(--muted); font-size: 11px; }footer a { color: var(--green-dark); text-decoration: none; }.footer-dot { color: var(--red); font-size: 8px; }
 @media (max-width: 800px) { .site-header, main, footer { width: min(100% - 36px, 600px); } main { display: block; padding: 48px 0 58px; }.intro { margin-bottom: 45px; } h1 { font-size: 58px; } .workspace { box-shadow: 8px 10px 0 rgba(36,31,27,.05); } }
-@media (max-width: 500px) { .site-header { padding-top: 23px; }.header-link { font-size: 0; }.header-link span { font-size: 16px; }.tab-row { padding: 0 20px; }.panel { padding: 28px 20px 24px; }.two-up { display: block; } h1 { font-size: 52px; } footer { display: block; } footer .footer-dot { margin: 0 8px; } }
+@media (max-width: 500px) { .site-header { padding-top: 23px; }.header-link { font-size: 0; }.header-link span { font-size: 16px; }.panel { padding: 28px 20px 24px; }.two-up { display: block; } h1 { font-size: 52px; } footer { display: block; } footer .footer-dot { margin: 0 8px; } }
