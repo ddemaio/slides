@@ -3,7 +3,7 @@ const REPO_NAME = "slides";
 const REPO_BRANCH = "main";
 const UPLOAD_FOLDER = "presentations";
 const MAX_BYTES = 25 * 1024 * 1024;
-const ALLOWED_EXTENSIONS = ["pdf", "ppt", "pptx"];
+const ALLOWED_EXTENSIONS = ["pdf"];
 
 function corsHeaders() {
   return {
@@ -56,7 +56,7 @@ export default {
       const speaker = form.get("speaker") || "speaker";
       const extension = file.name.split(".").pop().toLowerCase();
       if (!ALLOWED_EXTENSIONS.includes(extension)) {
-        return json({ error: "Only PDF, PPT or PPTX files are accepted." }, 400);
+        return json({ error: "Only PDF files are accepted." }, 400);
       }
       if (file.size > MAX_BYTES) {
         return json({ error: "That file is over 25 MB. Please export a smaller deck." }, 400);
@@ -83,13 +83,16 @@ export default {
           Accept: "application/vnd.github+json",
           Authorization: `Bearer ${env.GITHUB_TOKEN}`,
           "X-GitHub-Api-Version": "2022-11-28",
+          "User-Agent": "opensuse-slides-upload",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(commitBody),
       });
 
       if (!response.ok) {
         const result = await response.json().catch(() => ({}));
-        return json({ error: result.message || "GitHub could not publish that file." }, response.status);
+        const detail = typeof result.message === "string" ? result.message : JSON.stringify(result).slice(0, 300);
+        return json({ error: `GitHub returned ${response.status}: ${detail}` }, response.status);
       }
 
       const shareUrl = `https://${REPO_OWNER}.github.io/${REPO_NAME}/${path}`;
@@ -103,7 +106,7 @@ export default {
 async function getExistingSha(endpoint, token) {
   const response = await fetch(endpoint, {
     method: "GET",
-    headers: { Accept: "application/vnd.github+json", Authorization: `Bearer ${token}` },
+    headers: { Accept: "application/vnd.github+json", Authorization: `Bearer ${token}`, "User-Agent": "opensuse-slides-upload" },
   });
   if (!response.ok) return null;
   const result = await response.json();

@@ -9,7 +9,7 @@ A place for openSUSE Conference, Asia Summit and summit speakers to host their s
 
 ### The upload path
 
-1. A speaker fills in the form on the site and picks their deck (PDF/PPT/PPTX, ≤ 25 MB).
+1. A speaker fills in the form on the site and picks their deck (PDF, ≤ 25 MB).
 2. The site posts the file to the Worker endpoint (`opensuse-slides-upload.douglasdemaio.workers.dev`).
 3. The Worker validates the file and commits it to `presentations/<talk>-<speaker>.<ext>` in this repository.
 4. The Worker returns the GitHub Pages URL for the file, which the speaker pastes into their abstract on events.opensuse.org.
