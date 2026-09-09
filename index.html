@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A simple home for openSUSE conference talks and slides.">
+  <title>openSUSE slides</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="openSUSE slides home">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span><strong>openSUSE</strong><small>speaker desk</small></span>
+    </a>
+    <a class="header-link" href="https://events.opensuse.org/" target="_blank" rel="noreferrer">Events <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p class="eyebrow">Community talks · ready to share</p>
+      <h1>Put your slides<br><em>on the map.</em></h1>
+      <p class="lede">A small, friendly home for talks from the openSUSE Conference, Asia Summit, and every gathering in between.</p>
+      <div class="signal-row" aria-label="Supported formats">
+        <span><b></b> PDF</span><span><b></b> PPT</span><span><b></b> PPTX</span>
+      </div>
+    </section>
+
+    <section class="workspace" aria-label="Slide publishing workspace">
+      <div class="tab-row" role="tablist" aria-label="Slide actions">
+        <button class="tab is-active" id="publish-tab" role="tab" aria-selected="true" aria-controls="publish-panel">Publish slides</button>
+        <button class="tab" id="find-tab" role="tab" aria-selected="false" aria-controls="find-panel">Open a link</button>
+      </div>
+
+      <div class="panel" id="publish-panel" role="tabpanel" aria-labelledby="publish-tab">
+        <form id="upload-form">
+          <div class="form-heading"><span class="step">01</span><div><h2>Tell us about the talk</h2><p>This becomes the tidy filename people will see.</p></div></div>
+          <div class="fields two-up">
+            <label>Talk title <input name="title" type="text" placeholder="Making open source work" required maxlength="90"></label>
+            <label>Speaker name <input name="speaker" type="text" placeholder="Ada Lovelace" required maxlength="60"></label>
+          </div>
+          <label>Event <input name="event" type="text" placeholder="openSUSE Conference 2026" required maxlength="80"></label>
+          <label class="file-drop" for="slide-file">
+            <span class="upload-icon" aria-hidden="true">↑</span>
+            <span><strong id="file-label">Choose your slide deck</strong><small>PDF, PPT or PPTX · 25 MB maximum</small></span>
+            <input id="slide-file" name="file" type="file" accept=".pdf,.ppt,.pptx,application/pdf,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation" required>
+          </label>
+          <details class="token-details">
+            <summary>Repository access <span>needed only when publishing</span></summary>
+            <div class="token-copy"><p>A GitHub fine-grained token with <strong>Contents: write</strong> permission is used in your browser to commit the file. It is never stored.</p><label>GitHub token <input name="token" type="password" autocomplete="off" placeholder="github_pat_..." required></label></div>
+          </details>
+          <button class="primary-button" type="submit"><span>Publish slides</span><span aria-hidden="true">→</span></button>
+          <p class="form-note">Your deck will be added to this project’s <code>slides/</code> folder.</p>
+        </form>
+        <div class="status" id="status" role="status" aria-live="polite"></div>
+      </div>
+
+      <div class="panel hidden" id="find-panel" role="tabpanel" aria-labelledby="find-tab">
+        <div class="form-heading"><span class="step">02</span><div><h2>Open a published deck</h2><p>Paste a slide link from this project.</p></div></div>
+        <form id="find-form" class="find-form"><label>Slide link <input name="link" type="url" placeholder="https://.../slides/my-talk.pdf" required></label><button class="primary-button" type="submit"><span>Open deck</span><span aria-hidden="true">↗</span></button></form>
+        <div class="status" id="find-status" role="status" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer><span>Made for the openSUSE community</span><span class="footer-dot">●</span><a href="https://github.com/ddemaio/slides" target="_blank" rel="noreferrer">View the repository ↗</a></footer>
+  <script src="script.js"></script>
+</body>
+</html>
