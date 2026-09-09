@@ -2,7 +2,7 @@
 
 A simple home for speakers at the openSUSE Conference, openSUSEAsia Summit, and other openSUSE events to host your slide deck and share a link on your [events.opensuse.org](https://events.opensuse.org) abstract.
 
-Live site: <https://ddemaio.github.io/slides/>
+Live site: <https://opensuse.github.io/slides/>
 
 ## What it does
 
