@@ -21,7 +21,6 @@
 
   --accent: var(--teal);
   --accent-strong: var(--teal-dark);
-  --step: var(--red);
   --em: var(--red);
   --code: var(--teal-dark);
 
@@ -55,7 +54,6 @@
 
   --accent: var(--blue);
   --accent-strong: #00a8d6;
-  --step: var(--plum);
   --em: var(--blue);
   --code: var(--yellow);
 
@@ -114,7 +112,6 @@ h1 em { color: var(--em); font-family: Georgia, serif; font-weight: normal; lett
 .workspace::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, var(--strip-a), var(--strip-b), var(--strip-c), var(--strip-d)); }
 .panel { padding: 40px 38px 30px; }
 .form-heading { display: flex; gap: 15px; align-items: flex-start; margin-bottom: 27px; }
-.step { color: var(--step); font-family: Georgia, serif; font-size: 20px; font-style: italic; }
 .form-heading h2 { margin: 0 0 5px; font-size: 21px; letter-spacing: -.03em; }
 .form-heading p, .form-note { margin: 0; color: var(--muted); font-family: Georgia, serif; font-size: 13px; }
 label { display: block; margin-bottom: 17px; color: var(--muted); font-size: 11px; font-weight: bold; letter-spacing: .08em; text-transform: uppercase; }
