@@ -12,7 +12,7 @@ Speakers visit the site, fill in a short form (talk title, speaker, event), pick
 
 1. The speaker submits the form; the browser posts a request to the Worker.
 2. The Worker validates the upload (PDF only, ≤ 25 MB) and calls the GitHub Contents API.
-3. The commit lands in `/presentations/<talk-slug>-<speaker-slug>.pdf` on `main`. 
+3. The commit lands in `/presentations/<event-slug>-<talk-slug>-<speaker-slug>.pdf` on `main`, and the deck is added to the browseable list in `presentations/index.json`. 
 
 ### Site features
 
