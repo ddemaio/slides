@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-11T07:25:55.412Z",
+  "updatedAt": "2026-09-11T07:29:46.229Z",
   "decks": [
     {
       "title": "Endpoint Test",
@@ -9,6 +9,15 @@
       "filename": "opensuse-slides-endpoint-test-upload-check.pdf",
       "url": "https://opensuse.github.io/slides/presentations/opensuse-slides-endpoint-test-upload-check.pdf",
       "addedAt": "2026-09-11T07:25:55.107Z"
+    },
+    {
+      "title": "Akademy",
+      "speaker": "Douglas DeMaio",
+      "event": "KDE Akademy",
+      "eventKey": "kde-akademy",
+      "filename": "kde-akademy-akademy-douglas-demaio.pdf",
+      "url": "https://opensuse.github.io/slides/presentations/kde-akademy-akademy-douglas-demaio.pdf",
+      "addedAt": "2026-09-11T07:29:45.933Z"
     }
   ]
 }
