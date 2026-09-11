@@ -1,0 +1,89 @@
+name: Scan presentation PDFs
+
+on:
+  push:
+    branches: [main]
+    paths: ["presentations/**"]
+  pull_request:
+    branches: [main]
+    paths: ["presentations/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  scan-decks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Collect changed PDFs
+        id: pdfs
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            git diff --name-only "${{ github.event.pull_request.base.sha }}"...HEAD -- 'presentations/**/*.pdf' > changed-pdfs.txt || true
+          elif git rev-parse -q --verify HEAD^ >/dev/null 2>&1; then
+            git diff --name-only HEAD^ HEAD -- 'presentations/**/*.pdf' > changed-pdfs.txt || true
+          else
+            git diff-tree --no-commit-id --name-only -r HEAD -- 'presentations/**/*.pdf' > changed-pdfs.txt || true
+          fi
+          tr -d '\r' < changed-pdfs.txt | grep -v '^$' | sort -u > changed-pdfs.txt.tmp
+          mv changed-pdfs.txt.tmp changed-pdfs.txt
+          echo "count=$(wc -l < changed-pdfs.txt)" >> "$GITHUB_OUTPUT"
+          echo "found $(wc -l < changed-pdfs.txt) PDF file(s) to scan."
+
+      - name: Install ClamAV and pdfid
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends clamav clamav-daemon python3
+          sudo freshclam >/dev/null 2>&1 || true
+          curl -fsSL https://raw.githubusercontent.com/DidierStevens/DidierStevensSuite/master/pdfid.py -o pdfid.py
+
+      - name: Run scans
+        id: scan
+        run: |
+          set +e
+          FILECOUNT="${{ steps.pdfs.outputs.count }}"
+          : > scan-report.txt
+          if [ "$FILECOUNT" = "0" ] && [ "${{ github.event_name }}" != "workflow_dispatch" ]; then
+            echo "No changed PDFs to scan."
+            exit 0
+          fi
+          if [ "$FILECOUNT" = "0" ]; then
+            find presentations -name '*.pdf' -type f | sort > changed-pdfs.txt
+          fi
+          FAILED=0
+          while IFS= read -r file; do
+            [ -z "$file" ] && continue
+            echo "=== $file ===" >> scan-report.txt
+            clamscan --no-summary "$file" >> scan-report.txt 2>&1
+            rc=$?
+            python3 pdfid.py -e "$file" >> scan-report.txt 2>&1
+            if [ "$rc" -ne 0 ] || python3 pdfid.py -e "$file" | grep -qE '\/(JavaScript|JS|OpenAction|Launch|EmbeddedFile|RichMedia|AA|AcroForm|XFA|Encrypt|GoToE|ImportData|SubmitForm) *[1-9]'; then
+              FAILED=1
+            fi
+          done < changed-pdfs.txt
+          echo "failures=$FAILED" >> "$GITHUB_OUTPUT"
+          cat scan-report.txt
+          if [ "$FAILED" -eq 1 ]; then
+            echo "::error::One or more PDFs failed the scan."
+            exit 1
+          fi
+
+      - name: Report findings
+        if: failure() && steps.scan.outputs.failures == '1'
+        run: |
+          REPORT="$(cat scan-report.txt)"
+          BODY=$(printf 'Automated PDF scan (ClamAV + pdfid) reported issues in run %s\n\n```\n%s\n```\n\nPlease review. If a deck is confirmed malicious or off-policy:\n- short-term: remove it from `presentations/` in a pull request, or\n- long-term: add its SHA-256 hash to `.pdf-blocklist.json` so the uploader rejects it.\n' "${{ github.run_id }}" "$REPORT")
+          EXISTING=$(gh issue list --search "PDF scan flagged" --state open --limit 1 --json number --jq '.[0].number' 2>/dev/null || true)
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --body "$BODY"
+          else
+            gh issue create --title "PDF scan flagged deck(s) (run ${{ github.run_id }})" --body "$BODY"
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}

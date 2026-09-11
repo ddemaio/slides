@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "updatedAt": "2026-09-11T00:00:00.000Z",
+  "note": "SHA-256 hex digests of PDFs that must never be published. The upload worker rejects any file whose hash is listed here. This is where official CSAM hash sets (e.g. PhotoDNA or Thorn, once onboarded through the openSUSE/SUSE process) are loaded. Append one digest per string.",
+  "hashes": []
+}
