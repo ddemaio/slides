@@ -98,7 +98,7 @@ uploadForm.addEventListener("submit", async (event) => {
     const response = await fetch(UPLOAD_ENDPOINT, { method: "POST", body: formData });
     const result = await response.json().catch(() => ({}));
     if (!response.ok) throw new Error(result.error || "The upload could not be published.");
-    setStatus(`Published. <a href="${result.url}" target="_blank" rel="noreferrer">Open your slides ↗</a><br><small>Copy that link into your talk abstract on events.opensuse.org.</small>`);
+    setStatus(`Published. <a href="${result.url}" target="_blank" rel="noreferrer">Open your slides (viewable 30 seconds after upload) ↗</a><br><small>Copy that link into your talk abstract on events.opensuse.org.</small>`);
     uploadForm.reset();
     fileLabel.textContent = "Choose your slide deck";
   } catch (error) {
