@@ -1,4 +1,14 @@
 {
-  "updatedAt": "2026-09-10T00:00:00Z",
-  "decks": []
+  "updatedAt": "2026-09-11T07:25:55.412Z",
+  "decks": [
+    {
+      "title": "Endpoint Test",
+      "speaker": "Upload Check",
+      "event": "opensuse Slides",
+      "eventKey": "opensuse-slides",
+      "filename": "opensuse-slides-endpoint-test-upload-check.pdf",
+      "url": "https://opensuse.github.io/slides/presentations/opensuse-slides-endpoint-test-upload-check.pdf",
+      "addedAt": "2026-09-11T07:25:55.107Z"
+    }
+  ]
 }
