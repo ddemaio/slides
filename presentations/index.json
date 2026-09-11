@@ -2,33 +2,6 @@
   "updatedAt": "2026-09-11T07:47:24.196Z",
   "decks": [
     {
-      "title": "Endpoint Test",
-      "speaker": "Upload Check",
-      "event": "opensuse Slides",
-      "eventKey": "opensuse-slides",
-      "filename": "opensuse-slides-endpoint-test-upload-check.pdf",
-      "url": "https://opensuse.github.io/slides/presentations/opensuse-slides-endpoint-test-upload-check.pdf",
-      "addedAt": "2026-09-11T07:25:55.107Z"
-    },
-    {
-      "title": "Akademy",
-      "speaker": "Douglas DeMaio",
-      "event": "KDE Akademy",
-      "eventKey": "kde-akademy",
-      "filename": "kde-akademy-akademy-douglas-demaio.pdf",
-      "url": "https://opensuse.github.io/slides/presentations/kde-akademy-akademy-douglas-demaio.pdf",
-      "addedAt": "2026-09-11T07:29:45.933Z"
-    },
-    {
-      "title": "Akademy",
-      "speaker": "ddemaio",
-      "event": "KDE Akademy",
-      "eventKey": "kde-akademy",
-      "filename": "kde-akademy-akademy-ddemaio.pdf",
-      "url": "https://opensuse.github.io/slides/presentations/kde-akademy-akademy-ddemaio.pdf",
-      "addedAt": "2026-09-11T07:36:59.559Z"
-    },
-    {
       "title": "What’s new with openSUSE",
       "speaker": "Douglas DeMaio",
       "event": "KDE Akademy",
