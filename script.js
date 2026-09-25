@@ -5,6 +5,15 @@ const fileLabel = document.querySelector("#file-label");
 const status = document.querySelector("#status");
 
 const themeToggle = document.querySelector("#theme-toggle");
+// Universe dropdown toggle (page chrome only, cf. universe.opensuse.org)
+const uniBtn = document.querySelector("#uni-btn");
+const uniPanel = document.querySelector("#uni-panel");
+if (uniBtn && uniPanel) {
+  uniBtn.addEventListener("click", () => {
+    const open = uniPanel.classList.toggle("open");
+    uniBtn.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+}
 function syncThemeToggle() {
   themeToggle.setAttribute("aria-pressed", document.documentElement.getAttribute("data-theme") === "dark");
 }
