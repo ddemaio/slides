@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-04T03:26:17.827Z",
+  "updatedAt": "2026-10-04T04:27:33.298Z",
   "decks": [
     {
       "title": "What’s new with openSUSE",
@@ -36,6 +36,15 @@
       "filename": "opensuse-asia-summit-2026-signing-binaries-on-obs-introducing-pesign-ob-joey-lee.pdf",
       "url": "https://opensuse.github.io/slides/presentations/opensuse-asia-summit-2026-signing-binaries-on-obs-introducing-pesign-ob-joey-lee.pdf",
       "addedAt": "2026-10-04T03:26:17.498Z"
+    },
+    {
+      "title": "Getting the next generation to learn the GNU/Linux system",
+      "speaker": "James Ed Randson",
+      "event": "openSUSE.Asia Summit 2026",
+      "eventKey": "opensuse-asia-summit-2026",
+      "filename": "opensuse-asia-summit-2026-getting-the-next-generation-to-learn-the-gnu-james-ed-randson.pdf",
+      "url": "https://opensuse.github.io/slides/presentations/opensuse-asia-summit-2026-getting-the-next-generation-to-learn-the-gnu-james-ed-randson.pdf",
+      "addedAt": "2026-10-04T04:27:32.988Z"
     }
   ]
 }
