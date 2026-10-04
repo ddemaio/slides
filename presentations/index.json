@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-04T03:13:52.247Z",
+  "updatedAt": "2026-10-04T03:14:29.044Z",
   "decks": [
     {
       "title": "What’s new with openSUSE",
@@ -18,6 +18,15 @@
       "filename": "opensuse-asia-summit-2026-i-don-t-know-what-i-just-ran-a-beginner-s-gui-sk-izaz-ahmed.pdf",
       "url": "https://opensuse.github.io/slides/presentations/opensuse-asia-summit-2026-i-don-t-know-what-i-just-ran-a-beginner-s-gui-sk-izaz-ahmed.pdf",
       "addedAt": "2026-10-04T03:13:51.958Z"
+    },
+    {
+      "title": " Security for (not only openSUSE) developers",
+      "speaker": "Johannes Segitz",
+      "event": "openSUSE.Asia Summit 2026",
+      "eventKey": "opensuse-asia-summit-2026",
+      "filename": "opensuse-asia-summit-2026-security-for-not-only-opensuse-developers-johannes-segitz.pdf",
+      "url": "https://opensuse.github.io/slides/presentations/opensuse-asia-summit-2026-security-for-not-only-opensuse-developers-johannes-segitz.pdf",
+      "addedAt": "2026-10-04T03:14:28.708Z"
     }
   ]
 }
