@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-04T03:14:29.044Z",
+  "updatedAt": "2026-10-04T03:26:17.827Z",
   "decks": [
     {
       "title": "What’s new with openSUSE",
@@ -27,6 +27,15 @@
       "filename": "opensuse-asia-summit-2026-security-for-not-only-opensuse-developers-johannes-segitz.pdf",
       "url": "https://opensuse.github.io/slides/presentations/opensuse-asia-summit-2026-security-for-not-only-opensuse-developers-johannes-segitz.pdf",
       "addedAt": "2026-10-04T03:14:28.708Z"
+    },
+    {
+      "title": "Signing Binaries on OBS Introducing pesign-obs-integration",
+      "speaker": "Joey Lee",
+      "event": "openSUSE.Asia Summit 2026",
+      "eventKey": "opensuse-asia-summit-2026",
+      "filename": "opensuse-asia-summit-2026-signing-binaries-on-obs-introducing-pesign-ob-joey-lee.pdf",
+      "url": "https://opensuse.github.io/slides/presentations/opensuse-asia-summit-2026-signing-binaries-on-obs-introducing-pesign-ob-joey-lee.pdf",
+      "addedAt": "2026-10-04T03:26:17.498Z"
     }
   ]
 }
